@@ -20,23 +20,23 @@ class WaveBank {
 		for (int i=0; i < numWaves; i++ ){
 			Wave w = new Wave(i);
 			waves.add(w);
+
 		}
 	}
 
 	public void display(PVector locTemp, float oscValTemp) {
 
 		drawPosition = locTemp;
-
 		oscVal = oscValTemp * noise(0,0.03);
-		// println("oscVal: "+oscVal);
-
 		
 		for (int i=0; i < waves.size(); i++ ){
+			
 			pushMatrix();
 			translate(drawPosition.x + oscVal, drawPosition.y + oscVal);
 			Wave w = waves.get(i);
 			w.display(oscVal);
 			popMatrix();
+
 		}
 	}
 };

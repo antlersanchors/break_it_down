@@ -24,5 +24,6 @@ class Wave {
 		w.endShape(CLOSE);
 		
 		shape(w, 0 + waveWidth * pos, 0);
+		
 	}
 };
