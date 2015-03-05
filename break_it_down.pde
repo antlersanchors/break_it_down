@@ -10,6 +10,7 @@ ArrayList<WaveBank> ocean = new ArrayList<WaveBank>();
 public void setup() {
 	size(512, 512, P2D);
 	smooth();
+	frameRate(30);
 
 }
 
@@ -23,16 +24,14 @@ public void draw() {
 		bank = ocean.get(i);
 		drawLoc = bank.position;
 
-		// translate(drawLoc.x - (waveWidth*numWaves)/2, drawLoc.y);
 		bank.display(drawLoc, osc.update());
+		
 	}
 }
 
 public void mousePressed() {
 
-	WaveBank wb;
-
-	wb = new WaveBank(mouseX, mouseY);
-	ocean.add(wb);
+	bank = new WaveBank(mouseX, mouseY);
+	ocean.add(bank);
 
 };
