@@ -9,8 +9,6 @@ class Wave {
 
 		pos = posTemp;
 		
-
-		
 	}
 
 	public void display(float oscValTemp) {
