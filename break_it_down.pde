@@ -5,21 +5,34 @@ Oscillator osc = new Oscillator(-10, 5, 0.05);
 
 WaveBank bank;
 
+ArrayList<WaveBank> ocean = new ArrayList<WaveBank>();
+
 public void setup() {
 	size(512, 512, P2D);
 	smooth();
 
-
-	translate(width/2 - (waveWidth*numWaves)/2, height/2);
-	bank = new WaveBank();
-
 }
 
-void draw() {
+public void draw() {
 	background(15, 35, 255);
 	
-	translate(width/2 - (waveWidth*numWaves)/2, height/2);
+	PVector drawLoc;
 
-	bank.display(0, 0, osc.update());
+	for (int i=0; i < ocean.size(); i++ ){
+
+		bank = ocean.get(i);
+		drawLoc = bank.position;
+
+		// translate(drawLoc.x - (waveWidth*numWaves)/2, drawLoc.y);
+		bank.display(drawLoc, osc.update());
+	}
+}
+
+public void mousePressed() {
+
+	WaveBank wb;
+
+	wb = new WaveBank(mouseX, mouseY);
+	ocean.add(wb);
 
 };

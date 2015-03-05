@@ -5,9 +5,15 @@ class WaveBank {
 	int y;
 	float oscVal;
 
+	PVector position; 
+	PVector drawPosition;
+
 	ArrayList<Wave> waves;
 
-	public WaveBank() {
+	public WaveBank(float tempX, float tempY) {
+
+		position = new PVector(tempX, tempY);
+		println("creation position: "+position);
 
 		waves = new ArrayList<Wave>();
 
@@ -17,19 +23,20 @@ class WaveBank {
 		}
 	}
 
-	public void display(int tempX, int tempY, float oscValTemp) {
+	public void display(PVector locTemp, float oscValTemp) {
 
-		x = tempX;
-		y = tempY;
+		drawPosition = locTemp;
+
 		oscVal = oscValTemp * noise(0,0.03);
-		println("oscVal: "+oscVal);
+		// println("oscVal: "+oscVal);
 
-		translate(x + oscVal, y + oscVal);
+		
 		for (int i=0; i < waves.size(); i++ ){
-			
+			pushMatrix();
+			translate(drawPosition.x + oscVal, drawPosition.y + oscVal);
 			Wave w = waves.get(i);
 			w.display(oscVal);
-
+			popMatrix();
 		}
 	}
-}
+};
