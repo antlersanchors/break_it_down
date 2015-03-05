@@ -7,6 +7,7 @@ WaveBank bank;
 
 public void setup() {
 	size(512, 512, P2D);
+	smooth();
 
 
 	translate(width/2 - (waveWidth*numWaves)/2, height/2);
@@ -20,6 +21,5 @@ void draw() {
 	translate(width/2 - (waveWidth*numWaves)/2, height/2);
 
 	bank.display(0, 0, osc.update());
-
 
 };

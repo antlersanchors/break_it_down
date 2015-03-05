@@ -21,7 +21,7 @@ class WaveBank {
 
 		x = tempX;
 		y = tempY;
-		oscVal = oscValTemp;
+		oscVal = oscValTemp * noise(0,0.03);
 		println("oscVal: "+oscVal);
 
 		translate(x + oscVal, y + oscVal);
